@@ -5,421 +5,275 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Upload Resume — ProlificXpert</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-/* -------------------------------------------------- */
-/*              🌟 PREMIUM UI THEME                  */
-/* -------------------------------------------------- */
-
-:root {
-  --brand1:#00c6ff;
-  --brand2:#0072ff;
-  --glass:rgba(255,255,255,0.65);
-  --border:rgba(0,0,0,0.12);
-  --text:#0f172a;
-  --muted:#64748b;
-  --radius:18px;
+:root{
+  --blue:#007BFF;
+  --green:#28a745;
+  --grad1:#0ea5a4;
+  --grad2:#007BFF;
+  --card:#fff;
+  --muted:#6b7280;
+  --radius:14px;
 }
 
-body {
+*{box-sizing:border-box;}
+
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial;
   margin:0;
-  padding:28px 18px;
-  font-family:"Inter", sans-serif;
-  background:linear-gradient(135deg,#e9f7ff,#f7faff);
+  padding:20px;
+  background:linear-gradient(180deg,#f4f8ff 0%,#fff 60%);
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:flex-start;
-  color:var(--text);
+  color:#0f172a;
 }
 
-/* -------------------------------------------------- */
-/*                    HEADER                          */
-/* -------------------------------------------------- */
+.stage{width:100%;max-width:900px;margin:auto;}
 
-.hero {
-  text-align:center;
-  margin-bottom:24px;
-}
-.hero h1 {
-  font-size:30px;
+.hero{text-align:center;margin-bottom:20px;}
+.hero h1{
+  margin:0;
+  font-size:28px;
   font-weight:800;
-  background:linear-gradient(90deg,var(--brand1),var(--brand2));
+  background:linear-gradient(90deg,var(--grad1),var(--grad2));
   -webkit-background-clip:text;
   color:transparent;
 }
-.hero p { color:var(--muted); font-size:15px; }
+.hero p{margin-top:8px;font-size:14px;color:var(--muted);}
 
-/* -------------------------------------------------- */
-/*                    CARD                            */
-/* -------------------------------------------------- */
-
-.card {
-  width:100%;
-  max-width:820px;
-  background:var(--glass);
-  backdrop-filter:blur(18px);
+/* Card */
+.card{
+  background:var(--card);
   border-radius:var(--radius);
   padding:26px;
-  border:1px solid var(--border);
-  box-shadow:0 12px 40px rgba(0,0,0,0.08);
+  box-shadow:0 12px 40px rgba(0,0,0,.08);
+  border-top:6px solid;
+  border-image:linear-gradient(90deg,var(--grad1),var(--grad2)) 1;
 }
 
-/* GRID */
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px 22px;
-}
-.full { grid-column:1/-1; }
-
-.section-title {
+/* Form Grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px;}
+.full{grid-column:1/-1;}
+.section-title{
   grid-column:1/-1;
-  font-weight:700;
-  font-size:17px;
-  margin:10px 0 6px;
-  padding-bottom:6px;
-  border-bottom:1px solid rgba(0,0,0,0.08);
-}
-
-/* Floating Inputs */
-.field { position:relative; }
-
-.input-wrap {
-  position:relative;
-  background:white;
-  border:1px solid #dfe7ef;
-  padding:14px;
-  border-radius:12px;
-  transition:.2s;
-}
-
-.input-wrap input,
-.input-wrap textarea {
-  width:100%;
-  border:none;
-  background:transparent;
   font-size:15px;
-  outline:none;
+  font-weight:700;
+  margin:6px 0 8px;
 }
 
-.field label {
-  position:absolute;
-  top:14px;
-  left:18px;
-  color:#64748b;
+/* Inputs */
+.field label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:600;
   font-size:14px;
-  pointer-events:none;
-  transition:.2s;
+  color:#0b6f4a;
 }
-
-.input-wrap:focus-within {
-  border-color:var(--brand2);
-  box-shadow:0 0 0 4px rgba(0,114,255,0.15);
-}
-
-.input-wrap input:focus + label,
-.input-wrap input:not(:placeholder-shown) + label,
-.input-wrap textarea:focus + label,
-.input-wrap textarea:not(:placeholder-shown) + label {
-  top:-8px;
-  background:white;
-  padding:0 6px;
-  left:12px;
-  font-size:12px;
-  color:var(--brand2);
-}
-
-/* File Dropzone */
-.dropzone {
-  background:white;
-  border:2px dashed #bcd3ff;
-  padding:24px;
-  border-radius:14px;
-  text-align:center;
-  cursor:pointer;
-  transition:.2s;
-}
-.dropzone:hover {
-  border-color:var(--brand2);
-  background:#f3f8ff;
-}
-
-/* File preview */
-.file-preview {
-  margin-top:12px;
-  background:#edf7ff;
-  border-radius:12px;
+.input-wrap{
+  display:flex;
+  align-items:center;
+  background:#fbfbff;
+  border:1px solid #e6e9ef;
   padding:12px;
+  border-radius:10px;
+}
+.input-wrap input{
+  flex:1;
+  border:none;
+  outline:none;
+  font-size:16px;
+  background:transparent;
+}
+.input-wrap:focus-within{
+  border-color:var(--blue);
+  box-shadow:0 6px 20px rgba(2,132,199,.15);
+}
+
+/* File Preview */
+.file-preview{
+  margin-top:12px;
   display:flex;
   justify-content:space-between;
-  border:1px solid #bcd3ff;
+  align-items:center;
+  background:#f9fffb;
+  border:1px dashed #d6e8d9;
+  padding:12px;
+  border-radius:10px;
 }
-.file-preview small { color:var(--muted); }
+.file-preview small{color:var(--muted);}
 
-/* Submit Button */
-.btn {
+/* Button */
+.btn{
   width:100%;
-  background:linear-gradient(90deg,var(--brand1),var(--brand2));
+  padding:14px;
+  border-radius:12px;
+  background:linear-gradient(90deg,var(--grad1),var(--grad2));
   color:white;
-  padding:15px;
   font-size:16px;
   font-weight:700;
   border:none;
-  border-radius:14px;
-  margin-top:12px;
   cursor:pointer;
-  transition:.2s;
 }
-.btn:hover { transform:translateY(-2px); }
+.btn:disabled{opacity:.7;cursor:not-allowed;}
+
+.spinner{
+  width:18px;height:18px;
+  border:2px solid rgba(255,255,255,.4);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  display:inline-block;
+  margin-left:8px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* Modal */
-.modal-backdrop {
+.modal-backdrop{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.55);
+  background:rgba(0,0,0,.45);
   display:flex;
   align-items:center;
   justify-content:center;
   opacity:0;
   pointer-events:none;
-  transition:.25s;
+  transition:.2s;
 }
-.modal-backdrop.show {
+.modal-backdrop.show{
   opacity:1;
   pointer-events:auto;
 }
-.modal {
+.modal{
+  background:#fff;
   width:90%;
-  max-width:400px;
-  background:white;
-  padding:26px;
-  border-radius:18px;
+  max-width:420px;
+  padding:22px;
+  border-radius:14px;
   text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.2);
-  animation:fadeIn .25s ease;
 }
-@keyframes fadeIn {
-  from { opacity:0; transform:scale(.85); }
-  to   { opacity:1; transform:scale(1); }
-}
-.modal h3 {
-  font-size:20px;
-  background:linear-gradient(90deg,var(--brand1),var(--brand2));
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.link {
-  margin-top:12px;
+.modal h3{margin:0 0 8px;}
+.modal p{color:var(--muted);}
+.link{
   display:inline-block;
-  background:linear-gradient(90deg,var(--brand1),var(--brand2));
-  padding:10px 14px;
-  color:white;
-  border-radius:10px;
-  font-weight:700;
-}
-.close-btn {
   margin-top:10px;
-  background:#eef5ff;
-  border:none;
   padding:10px 14px;
   border-radius:10px;
-  cursor:pointer;
+  background:linear-gradient(90deg,var(--grad1),var(--grad2));
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
 }
 
 /* Responsive */
-@media(max-width:760px){
-  .grid { grid-template-columns:1fr; }
+@media(max-width:820px){
+  .grid{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  body{padding:12px;}
+  .hero h1{font-size:20px;}
+  .btn{font-size:15px;padding:12px;}
 }
 </style>
 </head>
 
 <body>
+<div class="stage">
+  <div class="hero">
+    <h1>Upload Your Resume</h1>
+    <p>Submit your profile — our team will review and get back to you.</p>
+  </div>
 
-<div class="hero">
-  <h1>Upload Your Resume</h1>
-  <p>Our team will review and get back to you.</p>
+  <div class="card">
+    <form id="uploadForm">
+      <div class="grid">
+
+        <div class="section-title">Personal Info</div>
+        <div class="field"><label>Full Name</label><div class="input-wrap"><input id="name" required></div></div>
+        <div class="field"><label>Email</label><div class="input-wrap"><input id="email" type="email" required></div></div>
+        <div class="field"><label>Phone</label><div class="input-wrap"><input id="phone" required></div></div>
+        <div class="field"><label>Location</label><div class="input-wrap"><input id="location" required></div></div>
+
+        <div class="section-title">Experience</div>
+        <div class="field"><label>Total Experience</label><div class="input-wrap"><input id="total_experience" type="number" required></div></div>
+        <div class="field"><label>Relevant Experience</label><div class="input-wrap"><input id="relevant_experience" type="number" required></div></div>
+        <div class="field full"><label>Skills</label><div class="input-wrap"><input id="skills" required></div></div>
+
+        <div class="section-title">Salary</div>
+        <div class="field"><label>Current CTC</label><div class="input-wrap"><input id="current_ctc" type="number" required></div></div>
+        <div class="field"><label>Expected CTC</label><div class="input-wrap"><input id="expected_ctc" type="number" required></div></div>
+
+        <div class="section-title full">Resume</div>
+        <div class="field full">
+          <input id="file" type="file" accept=".pdf,.doc,.docx">
+          <div id="previewArea"></div>
+        </div>
+
+        <div class="full">
+          <button class="btn" id="submitBtn">
+            Submit Application <span id="spinner" class="spinner" style="display:none"></span>
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </div>
 </div>
 
-<div class="card">
-<form id="uploadForm" autocomplete="off">
-<div class="grid">
-
-  <div class="section-title">Personal Info</div>
-
-  <div class="field">
-    <div class="input-wrap">
-      <input id="name" name="name" placeholder=" " required>
-      <label>Full Name</label>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="input-wrap">
-      <input id="email" name="email" type="email" placeholder=" " required>
-      <label>Email</label>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="input-wrap">
-      <input id="phone" name="phone" placeholder=" " required>
-      <label>Phone</label>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="input-wrap">
-      <input id="location" name="location" placeholder=" " required>
-      <label>Location</label>
-    </div>
-  </div>
-
-  <div class="section-title">Experience</div>
-
-  <div class="field">
-    <div class="input-wrap">
-      <input id="total_experience" name="total_experience" type="number" placeholder=" " required>
-      <label>Total Experience (Years)</label>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="input-wrap">
-      <input id="relevant_experience" name="relevant_experience" type="number" placeholder=" " required>
-      <label>Relevant Experience (Years)</label>
-    </div>
-  </div>
-
-  <div class="full field">
-    <div class="input-wrap">
-      <input id="skills" name="skills" placeholder=" " required>
-      <label>Skills</label>
-    </div>
-  </div>
-
-  <div class="section-title">Salary</div>
-
-  <div class="field">
-    <div class="input-wrap">
-      <input id="current_ctc" name="current_ctc" type="number" placeholder=" " required>
-      <label>Current CTC</label>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="input-wrap">
-      <input id="expected_ctc" name="expected_ctc" type="number" placeholder=" " required>
-      <label>Expected CTC</label>
-    </div>
-  </div>
-
-  <div class="section-title full">Resume Upload</div>
-
-  <div class="full">
-    <div id="dropzone" class="dropzone">Click or drag your resume here</div>
-    <input id="file" type="file" hidden>
-    <div id="previewArea" style="display:none;"></div>
-  </div>
-
-  <button class="btn" type="submit">Submit Application</button>
-
-</div>
-</form>
-</div>
-
-<!-- MODAL -->
 <div id="modal" class="modal-backdrop">
   <div class="modal">
     <h3>Upload Successful</h3>
     <p>Your resume has been uploaded.</p>
-    <a id="fileLink" class="link" target="_blank">Open Resume</a>
-    <button class="close-btn" onclick="closeModal()">Close</button>
+    <a id="fileLink" class="link" target="_blank">Open Resume</a><br><br>
+    <button onclick="closeModal()">Close</button>
   </div>
 </div>
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbw-M8W1n2pFXy8Qk_JO47ZCnfoKifuokvb04N-gKGp8EPH66tO6sivSHhWpPE8QOfg/exec";
+const scriptURL="https://script.google.com/macros/s/AKfycbw-M8W1n2pFXy8Qk_JO47ZCnfoKifuokvb04N-gKGp8EPH66tO6sivSHhWpPE8QOfg/exec";
+const form=document.getElementById("uploadForm");
+const fileInput=document.getElementById("file");
+const preview=document.getElementById("previewArea");
+const modal=document.getElementById("modal");
+const fileLink=document.getElementById("fileLink");
+const spinner=document.getElementById("spinner");
+const submitBtn=document.getElementById("submitBtn");
 
-const fileInput = document.getElementById("file");
-const dropzone = document.getElementById("dropzone");
-const previewArea = document.getElementById("previewArea");
-const form = document.getElementById("uploadForm");
-const modal = document.getElementById("modal");
-const fileLink = document.getElementById("fileLink");
-
-dropzone.onclick = () => fileInput.click();
-dropzone.ondragover = e => { e.preventDefault(); dropzone.style.borderColor="#0072ff"; }
-dropzone.ondragleave = () => dropzone.style.borderColor="#bcd3ff";
-dropzone.ondrop = e => {
-  e.preventDefault();
-  dropzone.style.borderColor="#bcd3ff";
-  if(e.dataTransfer.files.length){
-    fileInput.files = e.dataTransfer.files;
-    showPreview();
-  }
+fileInput.onchange=()=>{
+  const f=fileInput.files[0];
+  if(!f)return;
+  if(f.size>5*1024*1024){alert("Max 5MB");fileInput.value="";return;}
+  preview.innerHTML=`<div class="file-preview">${f.name} <small>${(f.size/1024/1024).toFixed(2)} MB</small></div>`;
 };
 
-fileInput.onchange = showPreview;
-
-function showPreview(){
-  const f = fileInput.files[0];
-  if(!f) return;
-
-  previewArea.style.display="block";
-  previewArea.innerHTML = `
-    <div class="file-preview">
-      <div><strong>${f.name}</strong> <br><small>${(f.size/1024/1024).toFixed(2)} MB</small></div>
-      <button onclick="removeFile()" style="border:none;background:none;color:#555;cursor:pointer">Remove</button>
-    </div>`;
-}
-function removeFile(){
-  fileInput.value="";
-  previewArea.style.display="none";
-}
-
-form.onsubmit = async (e)=>{
+form.onsubmit=async e=>{
   e.preventDefault();
-  const f = fileInput.files[0];
-  if(!f) { alert("Attach a resume"); return; }
+  const f=fileInput.files[0];
+  if(!f){alert("Attach resume");return;}
+  spinner.style.display="inline-block";
+  submitBtn.disabled=true;
 
-  const reader = new FileReader();
-  reader.readAsDataURL(f);
-  reader.onload = async ()=>{
-    const base64 = reader.result.split(",")[1];
-
-    const payload = {
-      name: name.value,
-      email: email.value,
-      phone: phone.value,
-      location: location.value,
-      total_experience: total_experience.value,
-      relevant_experience: relevant_experience.value,
-      skills: skills.value,
-      current_ctc: current_ctc.value,
-      expected_ctc: expected_ctc.value
-    };
-
-    const fd = new FormData();
-    fd.append("filename", f.name);
-    fd.append("mimetype", f.type);
-    fd.append("filedata", base64);
-    fd.append("data", JSON.stringify(payload));
-
-    const res = await fetch(scriptURL,{ method:"POST", body:fd });
-    const json = await res.json();
-
-    if(json.status === "success"){
-      fileLink.href = json.fileUrl;
-      modal.classList.add("show");
-    }
+  const reader=new FileReader();
+  reader.onload=async()=>{
+    const fd=new FormData();
+    fd.append("filename",f.name);
+    fd.append("filedata",reader.result.split(",")[1]);
+    fd.append("data",JSON.stringify({
+      name:name.value,email:email.value,phone:phone.value,location:location.value,
+      total_experience:total_experience.value,relevant_experience:relevant_experience.value,
+      skills:skills.value,current_ctc:current_ctc.value,expected_ctc:expected_ctc.value
+    }));
+    const res=await fetch(scriptURL,{method:"POST",body:fd});
+    const json=await res.json();
+    if(json.status==="success"){fileLink.href=json.fileUrl;modal.classList.add("show");}
+    spinner.style.display="none";
+    submitBtn.disabled=false;
   };
+  reader.readAsDataURL(f);
 };
 
-function closeModal(){
-  modal.classList.remove("show");
-}
+function closeModal(){modal.classList.remove("show");}
 </script>
 
 </body>
